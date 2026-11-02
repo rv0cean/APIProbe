@@ -10,7 +10,7 @@ from fastapi import Depends, FastAPI, Header, HTTPException, Request
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 
-app = FastAPI(title="APITest-AI Target", version="0.1.0")
+app = FastAPI(title="APIProbe Target", version="0.1.0")
 
 # 内存假数据：两个普通用户 + 一个管理员口令（仅测试用）
 USERS = {

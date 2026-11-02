@@ -19,11 +19,11 @@ ROOT = Path(__file__).resolve().parent.parent
 RESULTS = ROOT / "results"
 
 TEMPLATE = """<!DOCTYPE html>
-<html lang="zh"><head><meta charset="utf-8"><title>APITest-AI 测试报告</title>
+<html lang="zh"><head><meta charset="utf-8"><title>APIProbe 测试报告</title>
 <style>body{font-family:sans-serif;margin:2em}table{border-collapse:collapse}
 td,th{border:1px solid #ccc;padding:4px 10px}.high{color:#b00}.mid{color:#a60}.low{color:#555}</style>
 </head><body>
-<h1>APITest-AI 测试报告</h1>
+<h1>APIProbe 测试报告</h1>
 <p>功能用例：{{ func_total }} 条，通过 {{ func_passed }} 条，通过率 {{ func_rate }}%</p>
 <p>安全检出：预置缺陷 {{ defects_total }} 个，检出 {{ defects_found }} 个</p>
 <p>全部用例总耗时：{{ total_time }}s，最慢用例：{{ slowest }}</p>
