@@ -8,7 +8,7 @@
 import json
 import subprocess
 import sys
-import xml.etree.ElementTree as ET
+import defusedxml.ElementTree as ET  # Semgrep 整改：防 XXE/实体注入
 from collections import defaultdict
 from pathlib import Path
 

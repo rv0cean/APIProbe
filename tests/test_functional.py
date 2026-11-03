@@ -1,14 +1,5 @@
 """功能用例：正常路径与基础异常路径，这些用例应当全部通过。"""
-
-import os
-
 import pytest
-
-# 靶机专用用例：依赖自建靶机的预置数据与缺陷，仅在 dev 环境运行
-pytestmark = pytest.mark.skipif(
-    os.getenv("APIPROBE_ENV", "dev") != "dev",
-    reason="靶机专用用例仅在 dev 环境运行，real 环境请看 test_live_platform.py",
-)
 
 
 @pytest.mark.p0

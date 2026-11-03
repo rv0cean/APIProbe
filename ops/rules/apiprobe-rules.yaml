@@ -1,0 +1,44 @@
+# 本地规则集：作为 Semgrep 官方规则集的离线补充，覆盖本项目高频模式。
+rules:
+  - id: apiprobe.hardcoded-password
+    patterns:
+      - pattern-either:
+          - pattern: '{..., "password": "...", ...}'
+          - pattern: password = "..."
+    message: 疑似硬编码口令，请改用环境变量或密钥管理并轮换已暴露凭据。
+    severity: WARNING
+    languages: [python]
+    metadata:
+      category: security
+      cwe: "CWE-798: Use of Hard-coded Credentials"
+
+  - id: apiprobe.eval-exec
+    pattern-either:
+      - pattern: eval(...)
+      - pattern: exec(...)
+    message: eval/exec 执行动态代码，存在代码注入风险。
+    severity: ERROR
+    languages: [python]
+    metadata:
+      category: security
+      cwe: "CWE-94: Improper Control of Generation of Code"
+
+  - id: apiprobe.subprocess-shell-true
+    pattern: subprocess.$F(..., shell=True, ...)
+    message: subprocess 使用 shell=True，存在命令注入风险。
+    severity: ERROR
+    languages: [python]
+    metadata:
+      category: security
+      cwe: "CWE-78: OS Command Injection"
+
+  - id: apiprobe.weak-hash-md5
+    pattern-either:
+      - pattern: hashlib.md5(...)
+      - pattern: hashlib.sha1(...)
+    message: MD5/SHA1 不应用于安全场景，请改用 SHA-256+ 或专用密码哈希。
+    severity: WARNING
+    languages: [python]
+    metadata:
+      category: security
+      cwe: "CWE-327: Use of a Broken or Risky Cryptographic Algorithm"

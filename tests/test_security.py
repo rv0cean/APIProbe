@@ -3,17 +3,9 @@
 靶机预置了缺陷，所以这些用例失败 = 成功检出缺陷。
 报告工具会把安全用例的失败单独统计为检出数，见 docs/defects.md。
 """
-import os
 import time
 
 import pytest
-
-
-# 靶机专用用例：依赖自建靶机的预置数据与缺陷，仅在 dev 环境运行
-pytestmark = pytest.mark.skipif(
-    os.getenv("APIPROBE_ENV", "dev") != "dev",
-    reason="靶机专用用例仅在 dev 环境运行，real 环境请看 test_live_platform.py",
-)
 
 
 @pytest.mark.security
