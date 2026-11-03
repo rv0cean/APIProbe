@@ -12,6 +12,13 @@
 - `data/` 安全 payload 字典与定位规则配置
 - `results/` 运行结果与报告（生成物，不进版本库）
 
+## 环境区分
+
+- **dev（默认，开发阶段）**：测自带靶机，数据与缺陷都是预置的，口径确定，用于开发与回归；
+- **real（真实测试阶段）**：测真实平台接口（如 GitHub REST API 的真实数据与契约），不预设缺陷。
+
+详见 `docs/environments.md`。真实环境运行：`APIPROBE_ENV=real pytest -m live`。
+
 ## 快速开始
 
 ```bash

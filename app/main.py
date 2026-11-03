@@ -70,8 +70,8 @@ def get_user(user_id: int, user: dict = Depends(current_user)):
 
 
 @app.get("/admin/users")
-def admin_users(user: dict = Depends(current_user)):
-    # D1 已修复：管理接口接入 current_user 鉴权，未登录返回 401
+def admin_users():
+    # D1 未鉴权访问：管理接口没有接 current_user 依赖
     return [{"id": u["id"], "username": u["username"], "email": u["email"]} for u in USERS.values()]
 
 

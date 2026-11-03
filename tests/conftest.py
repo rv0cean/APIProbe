@@ -2,6 +2,12 @@ import pytest
 from fastapi.testclient import TestClient
 
 from app.main import ORDERS, TOKENS, app
+from tool.config import current_env
+
+
+@pytest.fixture(scope="session")
+def env_cfg():
+    return current_env()
 
 
 @pytest.fixture()
